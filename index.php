@@ -1,4 +1,5 @@
 <?php
+// session Start
 session_start();
 if(!isset($_SESSION['list'])) {
     $_SESSION['list'] = array();
@@ -10,9 +11,10 @@ if(!isset($_SESSION['list'])) {
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>To do list</title>
 
  <!-- Link to stylesheet CSS -->
- <link rel="stylesheet" type="text/css" href="css/styles.css">
+ <link rel="stylesheet" href="css/style.css">
  <!-- link to bootsrap -->
  <link rel="stylesheet" 
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -20,29 +22,34 @@ if(!isset($_SESSION['list'])) {
     crossorigin="anonymous">
 <!-- link to fontawesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+<!-- google font  -->
+<link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
 <!-- link to Js Bootsrap -->
-<script 
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-    crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
-
- <title>To do list</title>
 </head>
 <body>
+<!-- Navigation  -->
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Completed</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Not Completed</a>
   </div>
 </nav>
-     <form action="index.php" method="post">
-         <input type="text" name="todoEntry" id="name" >
-         <button type="submit" >Add</button>
+<!-- End of navigation -->
+<div class="container">
+    <h1 class="text-center heading">TODO LIST</h1>
+    <div class="line"></div>
+<!-- form -->
+     <form action="index.php" class="textBox" method="post">
+         <input type="text" required class="textInput" name="todoEntry" id="name" ><br/>
+         <button type="submit" class="button">Add</button>
      </form>
+<!-- End of Form -->
+</div>
          
  <?php
     if (isset($_POST['todoEntry'])) {
@@ -51,13 +58,11 @@ if(!isset($_SESSION['list'])) {
             // var_dump($_SESSION['list']);
         } if (isset($_SESSION['list'])) {
             foreach ($_SESSION['list'] as $item) {
-                echo  "<li>" . $item ."</li>";
+                echo  "<div class'container'>" . "<li>" . $item ."</li>". "</div>";
             }
-        //    console.log($item);
-
         }
-        //    console.log($_SESSION['list']);
 
  ?>
+
 </body>
 </html>
