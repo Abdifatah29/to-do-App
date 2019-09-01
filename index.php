@@ -44,25 +44,57 @@ if(!isset($_SESSION['list'])) {
     <h1 class="text-center heading">TODO LIST</h1>
     <div class="line"></div>
 <!-- form -->
-     <form action="index.php" class="textBox" method="post">
-         <input type="text" required class="textInput" name="todoEntry" id="name" ><br/>
+     <form action="index.php" class="textBox" placeholder="Enter Text" method="post">
+         <input type="text" required class="textInput" name="todoEntry" id="name" >
          <button type="submit" class="button">Add</button>
      </form>
 <!-- End of Form -->
 </div>
-         
+
  <?php
     if (isset($_POST['todoEntry'])) {
         // var_dump($_POST['todoEntry']);
             $_SESSION['list'][] = $_POST['todoEntry'];
             // var_dump($_SESSION['list']);
         } if (isset($_SESSION['list'])) {
-            foreach ($_SESSION['list'] as $item) {
-                echo  "<div class'container'>" . "<li>" . $item ."</li>". "</div>";
+            foreach ($_SESSION['list'] as $key => $item) {
+                if (isset($_POST['remove'])) {
+                             unset($_SESSION['list'][$key]);
+                        }
+                ?>
+                <!-- flex div that display all in a line -->
+                <div class='container'>
+                    <div class="textItem">
+                        <p> <?=$item ?></p>
+                    </div>
+                    <!-- tick btton -->
+                    <div>
+                        <button class="clickBtn">
+                            <i  class="fas fa-check"></i>
+                        </button>
+                    <!-- delete button -->
+                        <button name='remove'>
+                                <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <?php
             }
         }
 
  ?>
+ <script>
+
+
+     $( document ).ready(function() {
+         $( "#asd" ).on( "click", function() {
+alert('asd');
+});
+
+});
+ </script>
 
 </body>
+
 </html>
