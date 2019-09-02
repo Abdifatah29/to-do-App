@@ -1,10 +1,17 @@
 <?php
-// session Start
-session_start();
-if(!isset($_SESSION['list'])) {
-    $_SESSION['list'] = array();
-}
+// in completed list session Start
+    session_start();
+    if(!isset($_SESSION['list'])) {
+        $_SESSION['list'] = array();
+    }
+
+    // completed list session Start
+    if(!isset($_SESSION['completedList'])) {
+        $_SESSION['completedList'] = array();
+    }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +37,8 @@ if(!isset($_SESSION['list'])) {
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Completed</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Not Completed</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="complete.php" role="tab" aria-controls="nav-profile" aria-selected="false">Completed</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-contact" aria-selected="false">Not Completed</a>
   </div>
 </nav>
 <!-- End of navigation -->
@@ -58,11 +65,11 @@ if(!isset($_SESSION['list'])) {
                 <!-- flex div that display all in a line -->
                 <form class='container' action="" method="post">
                     <div class="shadow-sm pb-4">
-                        <p id='list' class="LineThrough"> <?=$item . " " . $date ?></p>
+                        <p id='<?= $key?>'> <?=$item . " " . $date ?></p>
                     </div>
                     <!-- tick btton -->
                     <div>
-                        <button class="btn btn-danger " name="complete">
+                        <button class="btn btn-danger " value="<?=$key?>" name="complete" onclick="checkList(<?= $key ?>)">
                             <i  class="fas fa-check"></i>
                         </button>
                     <!-- delete button -->
@@ -84,6 +91,14 @@ if(!isset($_SESSION['list'])) {
         // var_dump($_POST['delete']);
         unset($_SESSION['list'][$_POST['delete']]);
     }
+
+    if(isset($_POST['complete'])) {
+        if($_SESSION['list'] = [$_POST['complete']]) {
+        $_SESSION['completedList'] = $_SESSION['list'][$_POST['complete']];
+        unset($_SESSION['list'][$_POST['complete']]);
+        }
+    }
+// var_dump($_SESSION['completedList']);
  ?>
  <!-- All Scripts Links -->
 <!-- links to Scripts -->
@@ -94,9 +109,8 @@ if(!isset($_SESSION['list'])) {
 <!-- Link to Main.js -->
 
     <script>
-$(document).ready(function() {
-    $('#list ').css("color", "red");
-});
+    // $('#list ').css("color", "red");
+
     </script>
 
 <!-- End of scripts LInks -->
