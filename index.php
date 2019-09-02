@@ -24,11 +24,6 @@ if(!isset($_SESSION['list'])) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
 <!-- google font  -->
 <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
-<!-- link to Js Bootsrap -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 </head>
 <body>
 <!-- Navigation  -->
@@ -44,18 +39,16 @@ if(!isset($_SESSION['list'])) {
     <h1 class="text-center heading">TODO LIST</h1>
     <div class="line"></div>
 <!-- form -->
-     <form action="index.php" class="textBox" placeholder="Enter Text" method="post">
-         <input type="text" required class="textInput" name="todoEntry" id="name" >
-         <button type="submit" class="button">Add</button>
+     <form action="" class="textBox"  method="post">
+         <input type="text" required class="textInput" name="todoEntry"  placeholder="Enter List" id="name" >
+         <button type="submit" class="button btn btn-primary">Add</button>
      </form>
 <!-- End of Form -->
 </div>
 
  <?php
     if (isset($_POST['todoEntry'])) {
-        // var_dump($_POST['todoEntry']);
             $_SESSION['list'][] = $_POST['todoEntry'];
-            // var_dump($_SESSION['list']);
         } if (isset($_SESSION['list'])) {
             // Date initialization
             $date = date('Y-m-d');
@@ -63,22 +56,22 @@ if(!isset($_SESSION['list'])) {
             foreach ($_SESSION['list'] as $key => $item) {
                 ?>
                 <!-- flex div that display all in a line -->
-                <div class='container'>
-                    <div>
-                        <p> <?=$item . " " . $date ?></p>
+                <form class='container' action="" method="post">
+                    <div class="shadow-sm pb-4">
+                        <p id='list' class="LineThrough"> <?=$item . " " . $date ?></p>
                     </div>
                     <!-- tick btton -->
                     <div>
-                        <button class="btn btn-danger ">
+                        <button class="btn btn-danger " name="complete">
                             <i  class="fas fa-check"></i>
                         </button>
                     <!-- delete button -->
-                        <button class="btn btn-danger float-right" name='remove' action="delete">
+                        <button class="btn btn-danger float-right" name='delete' type="submit" value="<?= $key?>">
                                 <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
 
-                </div>
+            </form>
 
                 <?php
             }
@@ -86,15 +79,27 @@ if(!isset($_SESSION['list'])) {
         }
 
  ?>
- <script>
-     $(docment).ready(function() {
-        var itemDone =  0 ;
-        $(".container p").click(function() {
-    
-        })
-     });
- </script>
+ <?php 
+    if(isset($_POST['delete'])) {
+        // var_dump($_POST['delete']);
+        unset($_SESSION['list'][$_POST['delete']]);
+    }
+ ?>
+ <!-- All Scripts Links -->
+<!-- links to Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<!-- Link to Main.js -->
+
+    <script>
+$(document).ready(function() {
+    $('#list ').css("color", "red");
+});
+    </script>
+
+<!-- End of scripts LInks -->
 </body>
 
 </html>
