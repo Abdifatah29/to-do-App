@@ -57,42 +57,42 @@ if(!isset($_SESSION['list'])) {
             $_SESSION['list'][] = $_POST['todoEntry'];
             // var_dump($_SESSION['list']);
         } if (isset($_SESSION['list'])) {
+            // Date initialization
+            $date = date('Y-m-d');
+            // Foreach loop
             foreach ($_SESSION['list'] as $key => $item) {
-                if (isset($_POST['remove'])) {
-                             unset($_SESSION['list'][$key]);
-                        }
                 ?>
                 <!-- flex div that display all in a line -->
                 <div class='container'>
-                    <div class="textItem">
-                        <p> <?=$item ?></p>
+                    <div>
+                        <p> <?=$item . " " . $date ?></p>
                     </div>
                     <!-- tick btton -->
                     <div>
-                        <button class="clickBtn">
+                        <button class="btn btn-danger ">
                             <i  class="fas fa-check"></i>
                         </button>
                     <!-- delete button -->
-                        <button name='remove'>
+                        <button class="btn btn-danger float-right" name='remove' action="delete">
                                 <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
 
                 </div>
+
                 <?php
             }
+            // End for eacheach loop
         }
 
  ?>
  <script>
-
-
-     $( document ).ready(function() {
-         $( "#asd" ).on( "click", function() {
-alert('asd');
-});
-
-});
+     $(docment).ready(function() {
+        var itemDone =  0 ;
+        $(".container p").click(function() {
+    
+        })
+     });
  </script>
 
 </body>
