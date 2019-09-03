@@ -120,10 +120,7 @@
 
 <!-- Link to Main.js -->
 
-    <script>
-    $('#list ').css("color", "red");
 
-    </script>
 
 <!-- End of scripts LInks -->
 </body>
