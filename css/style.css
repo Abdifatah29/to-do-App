@@ -11,7 +11,7 @@
         text-align: center;
         padding-top: 5%;
         font-size: 350%;
-        font-family: 'Shadows Into Light', cursive;
+        /* font-family: 'Gayathri',sans-serif; */
         font-family: 'Courgette', cursive;
     }
     .container div{
@@ -34,7 +34,7 @@
         background: rgba(0, 0, 0, .5);
         color: #fff;
         font-size:22px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: 'Livvic',sans-serif;
         text-transform: capitalize;
         padding: 18px;
         margin: 6px 0;

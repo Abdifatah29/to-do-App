@@ -30,8 +30,10 @@
 <!-- link to fontawesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
 <!-- google font  -->
+<link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
+<!-- for output text -->
+<link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- heading -->
