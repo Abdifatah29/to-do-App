@@ -34,16 +34,10 @@
 </head>
 <body>
 <!-- Navigation  -->
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="complete.php" role="tab" aria-controls="nav-profile" aria-selected="false">Completed</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-contact" aria-selected="false">Not Completed</a>
-  </div>
-</nav>
+
 <!-- End of navigation -->
 <div class="container">
-    <h1 class="text-center heading">TODO LIST</h1>
+    <h1 class="text-center heading" id="head">TODO LIST</h1>
     <div class="line"></div>
 <!-- form -->
      <form action="" class="textBox"  method="post">
