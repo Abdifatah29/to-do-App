@@ -55,19 +55,24 @@
 
  <?php
     if (isset($_POST['todoEntry'])) {
-            $_SESSION['list'][] = $_POST['todoEntry'];
-        } if (isset($_SESSION['list'])) {
-            // Date initialization
-            $date = date('Y-m-d');
+        $_SESSION['list'][] = [
+            'data' => $_POST['todoEntry'],
+            'completed' => false
+        ];
+        // Date initialization
+        return header('Location: ?action=new');
+    }
+         if (isset($_SESSION['list'])) {
+             $date = date('Y-m-d');
             // Foreach loop
             foreach ($_SESSION['list'] as $key => $item) {
                 ?>
                 <!-- flex div that display all in a line -->
                 <form class='container' action="" method="post">
                     <div class="shadow-sm pb-4">
-                        <p id='<?= $key?>'> <?=$item . " " . $date ?></p>
+                        <p class="<?php echo $item['completed'] == true ? 'lineThrough' : 'notCompleted';  ?>" id='<?= $key?>'> <?=$item['data'] . " " . $date ?></p>
                     </div>
-                    <!-- tick btton -->
+                    <!-- tick btton --> 
                     <div>
                         <button class="btn btn-danger " value="<?=$key?>" name="complete" onclick="checkList(<?= $key ?>)">
                             <i  class="fas fa-check"></i>
@@ -84,20 +89,27 @@
             }
             // End for eacheach loop
         }
-
  ?>
  <?php 
     if(isset($_POST['delete'])) {
         // var_dump($_POST['delete']);
         unset($_SESSION['list'][$_POST['delete']]);
+        return header('Location: ?action=delete');
     }
 
     if(isset($_POST['complete'])) {
-        if($_SESSION['list'] = [$_POST['complete']]) {
-        $_SESSION['completedList'] = $_SESSION['list'][$_POST['complete']];
-        unset($_SESSION['list'][$_POST['complete']]);
+        if (!isset($_SESSION['completedList'])) {
+            $_SESSION['completedList'] = [];
         }
+        if(isset($_SESSION['list'][$_POST['complete']])) {
+            $_SESSION['list'][$_POST['complete']]['completed'] = !$_SESSION['list'][$_POST['complete']]['completed'];
+            $todo = $_SESSION['list'][$_POST['complete']];
+            $_SESSION['completedList'][] = $_SESSION['list'][$_POST['complete']];
+        }
+
+        return header('Location: ?action=complete');
     }
+    // session_destroy();
 // var_dump($_SESSION['completedList']);
  ?>
  <!-- All Scripts Links -->
@@ -109,7 +121,7 @@
 <!-- Link to Main.js -->
 
     <script>
-    // $('#list ').css("color", "red");
+    $('#list ').css("color", "red");
 
     </script>
 
