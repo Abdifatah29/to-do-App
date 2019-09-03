@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
 <!-- google font  -->
 <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- heading -->
@@ -47,7 +48,7 @@
         <div class="input-group mt-5 mb-3">
             <input type="text" required class="form-control textInput" id="name" name="todoEntry"placeholder="Enter List" aria-label="Todo Item" aria-describedby="button-addon2"><br>
             <div class="input-group-append">
-                <button class="btn btn-danger btn-primary" name="submit" type="submit" id="button-addon2">Add</button>
+                <button class="btn btn-primary" name="submit" type="submit" id="button-addon2">Add</button>
             </div>
         </div>
     </form>
@@ -71,20 +72,20 @@
                 <!-- flex div that display all in a line -->
                 <form class='container' action="" method="post">
                     <div class="shadow-sm pb-4">
-                        <p class="<?php echo $item['completed'] == true ? 'lineThrough' : 'notCompleted';  ?>" id='<?= $key?>'> <?=$item['data'] . " " . $date ?></p>
+                        <p class="<?php echo $item['completed'] == true ? 'lineThrough' : 'notCompleted';  ?> textOutput" id='<?= $key?>'> <?=$item['data'] . " " . $date ?></p>
+                        
+                        <div>
+                        <!-- tick btton --> 
+                            <button class="btn btn-danger " value="<?=$key?>" name="complete" onclick="checkList(<?= $key ?>)">
+                                <i  class="fas fa-check"></i>
+                            </button>
+                        <!-- delete button -->
+                            <button class="btn btn-danger float-right" name='delete' type="submit" value="<?= $key?>">
+                                    <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
                     </div>
-                    <!-- tick btton --> 
-                    <div>
-                        <button class="btn btn-danger " value="<?=$key?>" name="complete" onclick="checkList(<?= $key ?>)">
-                            <i  class="fas fa-check"></i>
-                        </button>
-                    <!-- delete button -->
-                        <button class="btn btn-danger float-right" name='delete' type="submit" value="<?= $key?>">
-                                <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-
-            </form>
+                </form>
 
                 <?php
             }
@@ -111,7 +112,7 @@
         return header('Location: ?action=complete');
     }
     // session_destroy();
-// var_dump($_SESSION['completedList']);
+
  ?>
  <!-- All Scripts Links -->
 <!-- links to Scripts -->
