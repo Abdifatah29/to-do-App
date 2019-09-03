@@ -33,17 +33,24 @@
 <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- heading -->
+    <h1 class="text-center heading head" id="head">TODO LIST</h1>
+
 <!-- Navigation  -->
 
 <!-- End of navigation -->
 <div class="container">
-    <h1 class="text-center heading" id="head">TODO LIST</h1>
+    <!-- <h1 class="text-center heading head" id="head">TODO LIST</h1> -->
     <div class="line"></div>
 <!-- form -->
-     <form action="" class="textBox"  method="post">
-         <input type="text" required class="textInput" name="todoEntry"  placeholder="Enter List" id="name" >
-         <button type="submit" class="button btn btn-primary">Add</button>
-     </form>
+    <form method="post" action="">
+        <div class="input-group mt-5 mb-3">
+            <input type="text" required class="form-control textInput" id="name" name="todoEntry"placeholder="Enter List" aria-label="Todo Item" aria-describedby="button-addon2"><br>
+            <div class="input-group-append">
+                <button class="btn btn-danger btn-primary" name="submit" type="submit" id="button-addon2">Add</button>
+            </div>
+        </div>
+    </form>
 <!-- End of Form -->
 </div>
 
