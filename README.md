@@ -1,6 +1,6 @@
 # to-do-App
 # todo-list
- A todo list web application for users to catch up with the important tasks for their daily lives.
+  an intuitive and easy to use online Todo list, and Task Manager. It helps you to get organized, simplify your life, and to get things done. Create todo lists, and manage them online from anywhere.
 
 Requirements to use the App or work with the code
 Visual Studio Code / Atom / Brackett etc
