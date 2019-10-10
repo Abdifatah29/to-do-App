@@ -14,12 +14,33 @@
 	<title>Sign Up</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<style type="text/css">
+	/* google font */
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
 		body{ font: 14px sans-serif; }
 		.wrapper{ width: 350px; padding: 20px; }
+		 /* Login page */
+    .main-header{
+        text-align: center;
+        margin: 0 auto;
+	}
+	.main-header h1{
+		font-family: 'Indie Flower', cursive;
+		font-size: 3em;
+	}
+	.register{
+        margin: 0 auto;
+	}
+	.register h2{
+		font-family: initial;
+	}
 	</style>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="main-header">
+		<!-- main heading -->
+		<h1>You really need get shit done  &#129320</h1>
+	</div>
+	<div class="wrapper register">
 		<h2>Sign Up</h2>
 		<p>Please fill this form to create an account.</p>
 		<form action="<?php echo getAppUrl('process.php'); ?>" method="post">
